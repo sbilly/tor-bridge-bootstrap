@@ -10,8 +10,10 @@
 ## If you control multiple relays, include then in the family
 #MyFamily $keyid,$keyid,...
 
+BridgeRelay 1
+ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed 
 
-ORPort 9001
+ORPort 443
 DirPort 9030
 
 RelayBandwidthRate 30 MBytes
