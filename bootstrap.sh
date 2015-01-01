@@ -26,7 +26,7 @@ fi
 
 # install tor and related packages
 echo "== Installing Tor and related packages"
-apt-get install -y deb.torproject.org-keyring tor tor-arm tor-geoipdb
+apt-get install -y deb.torproject.org-keyring tor tor-arm tor-geoipdb obfsproxy
 service tor stop
 
 # configure tor
