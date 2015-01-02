@@ -7,9 +7,6 @@
 ## Set your own contact info
 #ContactInfo 0xFFFFFFFF Random Person <nobody AT example dot com>
 
-## If you control multiple relays, include then in the family
-#MyFamily $keyid,$keyid,...
-
 BridgeRelay 1
 ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed 
 
