@@ -10,6 +10,12 @@
 -A INPUT -p tcp --dport 22 -j ACCEPT
 
 ## allow Tor ORPort
+-A INPUT -p tcp --dport 12345 -j ACCEPT
+
+## allow an ExtORPort
+-A INPUT -p tcp --dport 65432 -j ACCEPT
+
+## allow 443 for pluggable transports
 -A INPUT -p tcp --dport 443 -j ACCEPT
 
 ## ratelimit ICMP echo, allow all others
