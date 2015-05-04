@@ -8,8 +8,8 @@
 #ContactInfo 0xFFFFFFFF Random Person <nobody AT example dot com>
 
 BridgeRelay 1
-ServerTransportPlugin obfs3 exec /usr/bin/obfsproxy managed 
-ServerTransportListenAddr obfs3 0.0.0.0:443
+ServerTransportPlugin obfs4 exec /usr/bin/obfsproxy managed 
+ServerTransportListenAddr obfs4 0.0.0.0:443
 
 ORPort 12345
 ExtORPort 65432
@@ -26,3 +26,6 @@ Log notice file /var/log/tor/notices.log
 DataDirectory /var/lib/tor
 RunAsDaemon 1
 
+# By default, bridges are public.
+# Uncomment the following if you want your bridge to be private.
+#PublishServerDescriptor 0
