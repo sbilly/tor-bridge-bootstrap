@@ -36,8 +36,8 @@ IPv6=$(ifconfig | grep inet6 | grep -vE '(fe80::|inet6 ::1)' | awk '{print $2}')
 
 # Overwrite some placeholder text in /etc/pf.conf with the above-mentioned variable values
 sed -ir "s/NETWORK_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
-sed -ir "s/IPv4_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
-sed -ir "s/IPv6_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
+sed -ir "s/IPv4_PLACEHOLDER/$IPv4/g" $PWD/etc/pf.conf
+sed -ir "s/IPv6_PLACEHOLDER/$IPv6/g" $PWD/etc/pf.conf
 
 # Finally, copy the firewall rules over.
 cp $PWD/etc/pf.conf /etc/pf.conf
