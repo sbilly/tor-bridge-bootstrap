@@ -16,7 +16,7 @@ tor-bridge-bootstrap does this:
 * Helps harden the ssh server
 * Gives instructions on what the sysadmin needs to manually do at the end
 
-UPDATE: This project now has highly experimental FreeBSD support.
+UPDATE: This project now has experimental FreeBSD support. It passes the "Works on my machine" test.
 
 To use it, set up a Debian server, SSH into it, switch to the root user, and:
 
