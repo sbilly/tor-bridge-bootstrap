@@ -41,8 +41,6 @@ sed -ir "s/IPv6_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
 
 # final instructions
 echo ""
-echo "== Try SSHing into this server again in a new window, to confirm the firewall isn't broken"
-echo ""
 echo "== Edit /etc/tor/torrc"
 echo ""
 echo ""
