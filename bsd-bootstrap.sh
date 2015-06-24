@@ -25,6 +25,10 @@ $PWD/obfs4proxy-build.sh
 # configure tor
 cp $PWD/etc/tor/torrc /usr/local/etc/tor/torrc
 
+# Set up syscyl so we can bind to lower ports
+echo "net.inet.ip.portrange.reservedhigh=0" >> /etc/sysctl
+service sysctl restart
+
 # configure firewall rules
 echo "== Configuring firewall rules"
 echo 'pf_enable="YES"' >> /etc/rc.conf
@@ -39,8 +43,9 @@ sed -ir "s/NETWORK_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
 sed -ir "s/IPv4_PLACEHOLDER/$IPv4/g" $PWD/etc/pf.conf
 sed -ir "s/IPv6_PLACEHOLDER/$IPv6/g" $PWD/etc/pf.conf
 
-# Finally, copy the firewall rules over.
+# Finally, copy the firewall rules over and load the pf kernel module.
 cp $PWD/etc/pf.conf /etc/pf.conf
+kldload pf
 
 # final instructions
 echo ""
