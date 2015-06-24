@@ -29,6 +29,9 @@ echo "== Installing Tor and related packages"
 apt-get install -y deb.torproject.org-keyring tor tor-arm tor-geoipdb obfsproxy
 service tor stop
 
+# Use an external script to build obfs4proxy from source
+$PWD/obfs4proxy-build.sh
+
 # configure tor
 cp $PWD/etc/tor/torrc /etc/tor/torrc
 

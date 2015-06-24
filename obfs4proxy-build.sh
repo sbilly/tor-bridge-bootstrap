@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# This script simply handles the building of obfs4
+
+# First, create a sandbox directory
+mkdir /root/go
+
+# This section git clones stuff from torproject.org and preps it to our needs.
+mkdir -p /root/go/src/git.torproject.org/pluggable-transports/
+git clone https://git.torproject.org/pluggable-transports/obfs4.git
+mv /root/obfs4 /root/go/src/git.torproject.org/pluggable-transports/obfs4.git
+git clone https://git.torproject.org/pluggable-transports/goptlib.git
+mv /root/goptlib /root/go/src/git.torproject.org/pluggable-transports/goptlib.git
+
+# These lines pull in all the dependencies.
+git clone https://github.com/agl/ed25519 /root/go/src/github.com/agl/ed25519
+git clone https://github.com/dchest/siphash /root/go/src/github.com/dchest/siphash
+mkdir /root/go/src/golang.org/x/
+git clone https://github.com/golang/crypto/ /root/go/src/golang.org/x/crypto
+git clone https://github.com/golang/net /root/go/src/golang.org/x/net
+
+# Finally, the build process. This shouldn't take long.
+cd /root/go/src/git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy/
+go build
+cp /root/go/src/git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy/obfs4proxy /usr/local/bin/obfs4proxy
