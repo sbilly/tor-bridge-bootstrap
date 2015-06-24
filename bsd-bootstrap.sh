@@ -44,7 +44,7 @@ cp $PWD/etc/pf.conf /etc/pf.conf
 
 # final instructions
 echo ""
-echo "== Edit /etc/tor/torrc"
+echo "== Edit /usr/local/etc/tor/torrc"
 echo ""
 echo ""
-echo "== REBOOT THIS SERVER"
+echo "== Run 'service tor start'"
