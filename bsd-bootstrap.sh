@@ -16,7 +16,7 @@ pkg upgrade
 # install tor and related packages
 echo "== Installing Tor and related packages"
 pkg install tor obfsproxy git go tlsdate arm
-service tor stop
+echo 'tor_enable="YES"' >> /etc/rc.conf
 
 # Use an external script to build obfs4proxy from source
 setenv GOPATH /root/go
