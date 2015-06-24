@@ -16,6 +16,8 @@ tor-bridge-bootstrap does this:
 * Helps harden the ssh server
 * Gives instructions on what the sysadmin needs to manually do at the end
 
+UPDATE: This project now has highly experimental FreeBSD support.
+
 To use it, set up a Debian server, SSH into it, switch to the root user, and:
 
 ```sh
@@ -26,5 +28,5 @@ cd tor-bridge-bootstrap
 Then edit the ORPort and ExtORPort values in tor-bridge-bootstrap/etc/tor/torrc, tor-bridge-bootstrap/etc/iptables/rules.v4 tor-bridge-bootstrap/etc/iptables/rules.v6. Once that's finished:
 
 ```sh
-./bootstrap.sh
+./deb-bootstrap.sh
 ```
