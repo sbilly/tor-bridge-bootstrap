@@ -19,6 +19,8 @@ git clone https://github.com/golang/net /root/go/src/golang.org/x/net
 
 # Finally, the build process. This shouldn't take long.
 cd /root/go/src/git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy/
+echo "== Now building obfs4proxy"
 go build
+echo "== Build complete."
 cp /root/go/src/git.torproject.org/pluggable-transports/obfs4.git/obfs4proxy/obfs4proxy /usr/local/bin/obfs4proxy
 
