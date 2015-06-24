@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # check for root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root" 1>&2
-    exit 1
+if [ `id -u` != 0 ]; then
+    echo "Must be root to run script"
+    exit
 fi
 
 PWD="$(pwd)"
@@ -15,7 +15,7 @@ pkg upgrade
 
 # install tor and related packages
 echo "== Installing Tor and related packages"
-pkg install tor obfsproxy git go tlsdate arm
+pkg install tor-devel obfsproxy git go tlsdate arm
 echo 'tor_enable="YES"' >> /etc/rc.conf
 
 # Use an external script to build obfs4proxy from source
@@ -42,25 +42,25 @@ sed -ir "s/IPv6_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
 # configure sshd
 ORIG_USER=$(logname)
 if [ -n "$ORIG_USER" ]; then
-	echo "== Configuring sshd"
-	# only allow the current user to SSH in
-	echo "AllowUsers $ORIG_USER" >> /etc/ssh/sshd_config
-	echo "  - SSH login restricted to user: $ORIG_USER"
-	if grep -q "Accepted publickey for $ORIG_USER" /var/log/auth.log; then
-		# user has logged in with SSH keys so we can disable password authentication
-		sed -i '/^#\?PasswordAuthentication/c\PasswordAuthentication no' /etc/ssh/sshd_config
-		echo "  - SSH password authentication disabled"
-		if [ $ORIG_USER == "root" ]; then
-			# user logged in as root directly (rather than using su/sudo) so make sure root login is enabled
-			sed -i '/^#\?PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
-		fi
-	else
-		# user logged in with a password rather than keys
-		echo "  - You do not appear to be using SSH key authentication.  You should set this up manually now."
-	fi
-	service sshd reload
+        echo "== Configuring sshd"
+        # only allow the current user to SSH in
+        echo "AllowUsers $ORIG_USER" >> /etc/ssh/sshd_config
+        echo "  - SSH login restricted to user: $ORIG_USER"
+        if grep -q "Accepted publickey for $ORIG_USER" /var/log/auth.log; then
+                # user has logged in with SSH keys so we can disable password authentication
+                sed -i '/^#\?PasswordAuthentication/c\PasswordAuthentication no' /etc/ssh/sshd_config
+                echo "  - SSH password authentication disabled"
+                if [ $ORIG_USER == "root" ]; then
+                        # user logged in as root directly (rather than using su/sudo) so make sure root login is enabled
+                        sed -i '/^#\?PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
+                fi
+        else
+                # user logged in with a password rather than keys
+                echo "  - You do not appear to be using SSH key authentication.  You should set this up manually now."
+        fi
+        service sshd reload
 else
-	echo "== Could not configure sshd automatically.  You will need to do this manually."
+        echo "== Could not configure sshd automatically.  You will need to do this manually."
 fi
 
 # final instructions
@@ -71,3 +71,4 @@ echo "== Edit /etc/tor/torrc"
 echo ""
 echo ""
 echo "== REBOOT THIS SERVER"
+
