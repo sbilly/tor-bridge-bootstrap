@@ -26,10 +26,11 @@ fi
 
 # install tor and related packages
 echo "== Installing Tor and related packages"
-apt-get install -y deb.torproject.org-keyring tor tor-arm tor-geoipdb obfsproxy
+apt-get install -y deb.torproject.org-keyring tor tor-arm tor-geoipdb obfsproxy golang
 service tor stop
 
 # Use an external script to build obfs4proxy from source
+export GOPATH=/root/go
 $PWD/obfs4proxy-build.sh
 
 # configure tor
