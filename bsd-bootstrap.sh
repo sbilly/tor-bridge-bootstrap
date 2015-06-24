@@ -23,7 +23,7 @@ setenv GOPATH /root/go
 $PWD/obfs4proxy-build.sh
 
 # configure tor
-cp $PWD/etc/tor/torrc /etc/tor/torrc
+cp $PWD/etc/tor/torrc /usr/local/etc/tor/torrc
 
 # configure firewall rules
 echo "== Configuring firewall rules"
