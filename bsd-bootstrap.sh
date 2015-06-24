@@ -9,13 +9,13 @@ fi
 PWD="$(pwd)"
 
 # update software
-echo "== Updating software"
-freebsd-update fetch install
-pkg upgrade
+#echo "== Updating software"
+#freebsd-update fetch install
+#pkg upgrade
 
 # install tor and related packages
 echo "== Installing Tor and related packages"
-pkg install tor-devel obfsproxy git go tlsdate arm
+#pkg install tor-devel obfsproxy git go tlsdate arm
 echo 'tor_enable="YES"' >> /etc/rc.conf
 
 # Use an external script to build obfs4proxy from source
@@ -39,10 +39,12 @@ sed -ir "s/NETWORK_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
 sed -ir "s/IPv4_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
 sed -ir "s/IPv6_PLACEHOLDER/$NETWORK/g" $PWD/etc/pf.conf
 
+# Finally, copy the firewall rules over.
+cp $PWD/etc/pf.conf /etc/pf.conf
+
 # final instructions
 echo ""
 echo "== Edit /etc/tor/torrc"
 echo ""
 echo ""
 echo "== REBOOT THIS SERVER"
-
