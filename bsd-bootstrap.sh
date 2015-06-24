@@ -58,7 +58,7 @@ if [ -n "$ORIG_USER" ]; then
 		# user logged in with a password rather than keys
 		echo "  - You do not appear to be using SSH key authentication.  You should set this up manually now."
 	fi
-	service ssh reload
+	service sshd reload
 else
 	echo "== Could not configure sshd automatically.  You will need to do this manually."
 fi
