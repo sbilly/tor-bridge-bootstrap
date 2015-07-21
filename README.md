@@ -30,3 +30,4 @@ Then edit the ORPort and ExtORPort values in tor-bridge-bootstrap/etc/tor/torrc,
 ```sh
 ./deb-bootstrap.sh
 ```
+NOTE TO DEBIAN WHEEZY USERS: You need to install golang from wheezy-backports before running this script.
