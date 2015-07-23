@@ -1,4 +1,4 @@
-# The next line enabled bridge mode
+# The next line enables bridge mode
 
 BridgeRelay 1
 
@@ -16,6 +16,7 @@ ORPort 12345
 ExtORPort 65432
 
 # Adjust these limits to align with your server's bandwidth caps.
+
 RelayBandwidthRate 30 MBytes
 RelayBandwidthBurst 100 MBytes
 
