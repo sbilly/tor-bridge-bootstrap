@@ -24,6 +24,7 @@ $PWD/obfs4proxy-build.sh
 
 # configure tor
 cp $PWD/etc/tor/torrc /usr/local/etc/tor/torrc
+sed -ir 's/\/notices.log//' /usr/local/etc/tor/torrc
 
 # Set up syscyl so we can bind to lower ports
 echo "net.inet.ip.portrange.reservedhigh=0" >> /etc/sysctl
