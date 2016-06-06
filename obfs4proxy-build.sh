@@ -13,7 +13,7 @@ git clone https://git.torproject.org/pluggable-transports/goptlib.git /root/go/s
 # These lines pull in all the dependencies.
 git clone https://github.com/agl/ed25519 /root/go/src/github.com/agl/ed25519
 git clone https://github.com/dchest/siphash /root/go/src/github.com/dchest/siphash
-mkdir /root/go/src/golang.org/x/
+mkdir -p /root/go/src/golang.org/x/
 git clone https://github.com/golang/crypto/ /root/go/src/golang.org/x/crypto
 git clone https://github.com/golang/net /root/go/src/golang.org/x/net
 
