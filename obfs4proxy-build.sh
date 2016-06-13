@@ -3,12 +3,12 @@
 # This script simply handles the building of obfs4
 
 # First, create a sandbox directory
-mkdir /root/go
+mkdir -p /root/go
 
 # This section git clones stuff from torproject.org and preps it to our needs.
 mkdir -p /root/go/src/git.torproject.org/pluggable-transports/
-git clone https://git.torproject.org/pluggable-transports/obfs4.git /root/go/src/git.torproject.org/pluggable-transports/obfs4.git
-git clone https://git.torproject.org/pluggable-transports/goptlib.git /root/go/src/git.torproject.org/pluggable-transports/goptlib.git
+git clone https://github.com/Yawning/obfs4.git /root/go/src/git.torproject.org/pluggable-transports/obfs4.git
+git clone https://github.com/Yawning/goptlib.git /root/go/src/git.torproject.org/pluggable-transports/goptlib.git
 
 # These lines pull in all the dependencies.
 git clone https://github.com/agl/ed25519 /root/go/src/github.com/agl/ed25519
